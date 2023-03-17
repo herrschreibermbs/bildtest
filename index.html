@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Test 11</title>
+	<title>Test 12</title>
 	<style>
 		body {
-			background-image: url('bg.png');
-			background-size: contain;
-			background-repeat: no-repeat;
-			background-position: center;
+			background-image: url('Buchstabengitter quer.png');
+			background-size: cover;
 			margin: 0;
 			padding: 0;
 			height: 100vh;
@@ -16,12 +14,13 @@
 
 		.bild {
 			position: absolute;
-			top: calc(50% - 290px);
-			left: calc(50% - 500px);
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
 			cursor: move;
-			object-fit: contain;
-			width: 1000px;
-			height: 579px;
+			object-fit: cover;
+			width: 100vh;
+			height: 100vh;
 		}
 	</style>
 	<script src="script.js"></script>
