@@ -33,6 +33,7 @@ function dragStart(event) {
 
 // Funktion, die aufgerufen wird, wenn das Dragging endet
 function dragEnd(event) {
+	console.log('drag');
 	event.preventDefault();
 	isDragging = false;
 }
