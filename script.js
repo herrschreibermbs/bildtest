@@ -1,5 +1,5 @@
-// Bild-Element aus dem HTML-Dokument auswählen
-var bild = document.getElementById('bild');
+// Bild-Elemente aus dem HTML-Dokument auswählen
+var bilder = document.querySelectorAll('.bild');
 
 // Variablen initialisieren
 var isDragging = false;
@@ -9,22 +9,24 @@ var currentX = 0;
 var currentY = 0;
 
 // Event-Listener hinzufügen
-bild.addEventListener('mousedown', dragStart);
-bild.addEventListener('touchstart', dragStart);
-bild.addEventListener('mouseup', dragEnd);
-bild.addEventListener('touchend', dragEnd);
-bild.addEventListener('mousemove', drag);
-bild.addEventListener('touchmove', drag);
+bilder.forEach(function(bild) {
+    bild.addEventListener('mousedown', dragStart);
+    bild.addEventListener('touchstart', dragStart);
+    bild.addEventListener('mouseup', dragEnd);
+    bild.addEventListener('touchend', dragEnd);
+    bild.addEventListener('mousemove', drag);
+    bild.addEventListener('touchmove', drag);
+});
 
 // Funktion, die aufgerufen wird, wenn das Dragging startet
 function dragStart(event) {
 	event.preventDefault();
 	if (event.type === 'touchstart') {
-		startX = event.touches[0].clientX - bild.offsetLeft;
-		startY = event.touches[0].clientY - bild.offsetTop;
+		startX = event.touches[0].clientX - this.offsetLeft;
+		startY = event.touches[0].clientY - this.offsetTop;
 	} else {
-		startX = event.clientX - bild.offsetLeft;
-		startY = event.clientY - bild.offsetTop;
+		startX = event.clientX - this.offsetLeft;
+		startY = event.clientY - this.offsetTop;
 	}
 	isDragging = true;
 }
@@ -46,7 +48,7 @@ function drag(event) {
 			currentX = event.clientX - startX;
 			currentY = event.clientY - startY;
 		}
-		bild.style.left = currentX + 'px';
-		bild.style.top = currentY + 'px';
+		this.style.left = currentX + 'px';
+		this.style.top = currentY + 'px';
 	}
 }
